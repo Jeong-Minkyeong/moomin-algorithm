@@ -9,6 +9,4 @@ def solution(n):
             else:
                 break
     return answer
-# 3 6 9 12 13  3 3+3 13
-# 3 6 9 12 13 15   6 15+6 21 
-# 3 6 9 12 13 15 18 21 23 24 
+
