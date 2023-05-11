@@ -1,2 +1,2 @@
-# Baekjoon_moo_min
-This is a auto push repository for Baekjoon Online Judge created with [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub).
+## 무민의 알고리즘 뽀개기📚
+백준&프로그래머스
