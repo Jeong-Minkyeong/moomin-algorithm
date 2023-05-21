@@ -13,4 +13,4 @@ def solution(s):
             else:
                 answer.pop()
                 
-    return True if len(answer) == 0 else False    
+    return True if not answer else False    
