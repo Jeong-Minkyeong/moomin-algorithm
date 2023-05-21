@@ -22,7 +22,8 @@ def solution(s):
     return ''.join(s)
             
             
-            
+# s.split(' ') >> 이렇게 쪼개면 띄어쓰기까지 같이 담김
+# ' '.join(s)  >> 요것도 마찬가지 공백도 같이 조인됨
                 
             
         
