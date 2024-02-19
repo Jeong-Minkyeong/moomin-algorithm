@@ -6,4 +6,3 @@ def solution(brown, yellow):
         tile = 4 + i[0]*2 +i[1]*2
         if tile == brown:
             return [i[0]+2, i[1]+2]
-    #return temp
