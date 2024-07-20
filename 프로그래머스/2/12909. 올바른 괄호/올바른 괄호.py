@@ -2,7 +2,6 @@
 
 def solution(s):
     temp = []
-    size = len(s)
     for i in s:
         if len(temp) == 0:
             temp.append(i)
