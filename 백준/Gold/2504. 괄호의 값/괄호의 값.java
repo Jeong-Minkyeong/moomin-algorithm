@@ -103,7 +103,7 @@ public class Main {
 
         // 최종 결과 계산
         for (String n : stack1) {
-            if(n.equals("(") || n.equals("[") || n.equals(")") || n.equals("]")){
+            if(n.equals("(") || n.equals("[")){
                 System.out.println(0);
                 return;
             }
