@@ -33,9 +33,7 @@ public class Main {
             arr[end].add(start);
         }
 
-        for(int i = 1; i<=N; i++) {
-            func(i);
-        }
+            func(1);       
 
         for(int i: parent.values()){
             System.out.println(i);
