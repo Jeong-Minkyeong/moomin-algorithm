@@ -36,7 +36,7 @@ class Solution {
         }
         
         // 탐색
-        visited = new boolean[words.length];
+        visited = new boolean[words.length+1];
         score = new int[words.length+1];
         
         bfs(0);
@@ -54,22 +54,20 @@ class Solution {
         // Queue에 삽입
         q.add(n);
         
+        // 방문 처리
+        visited[n] = true;
+        
         while(!q.isEmpty()){
             int temp = q.poll();
             
             for(int i = 0; i<map.get(temp).size(); i++){
             
                 // 방문 기록이 있다면
-                if(score[map.get(temp).get(i)] != 0){
-                    // 대소비교
-                    score[i] = Math.min(score[i], score[temp] + 1);
-                    continue;
-                }
+                if(visited[map.get(temp).get(i)] == true) continue;
                 
                 // 방문 기록이 없다면
+                visited[map.get(temp).get(i)] = true;
                 score[map.get(temp).get(i)] = score[temp] + 1;
-                
-                // if(map.get(map.get(temp).get(i)).isEmpty()) continue;
                 q.add(map.get(temp).get(i));
             }
         }  
