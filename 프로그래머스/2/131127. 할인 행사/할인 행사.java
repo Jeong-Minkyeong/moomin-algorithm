@@ -18,14 +18,13 @@ class Solution {
         for(int i = 0; i<discount.length; i++) {
             
             // want에 없는 상품이라면
-            if(bucket.getOrDefault(discount[i], -100) == -100){
+            if(bucket.get(discount[i]) == null){
                 bucket = new HashMap<>(hash);
                 count = 0;
                 continue;
             }
             
             count++;
-            System.out.println(count);
             
             // count가 10개째 이상이면
             if(count >= 10) {
