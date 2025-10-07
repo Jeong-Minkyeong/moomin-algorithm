@@ -12,9 +12,8 @@ public class Main {
     static HashMap<Integer, ArrayList<Integer>> peopleAndParty = new HashMap<>();
 
     static boolean[] visited;
-    static int party = 0;
     static int answer = 0;
-
+    
     public static void main(String[] args) throws IOException {
 
         // - 준비
@@ -57,25 +56,22 @@ public class Main {
             dfs(i,peopleAndParty.get(i));
         }
 
-
         // - 정답 출력
-        int c = 1;
         for(boolean b : visited){
-            //System.out.println(c++ + " 여기야");
-            if(b) {
-               // System.out.println(c++);
-                answer++;
-            }
+            if(!b) answer++;
         }
-        System.out.println(M - answer);
+        System.out.println(answer-1);
     }
 
     public static void dfs(int people, ArrayList<Integer> party) {
         for(int p : party){
+        	// 이미 아는 사람이 있는 파티라면 pass
             if(visited[p]) continue;
+            
             visited[p] = true;
             ArrayList<Integer> peoples = partyAndPeople.get(p);
             for(Integer i : peoples){
+            	// 본인이라면
                 if(i == people) continue;
                 dfs(i, peopleAndParty.get(i));
             }
