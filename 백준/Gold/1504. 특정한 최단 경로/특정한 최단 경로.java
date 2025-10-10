@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
 
+
 class Node implements Comparable<Node> {
     int next, cost;
 
@@ -43,6 +44,7 @@ public class Main {
             int n = Integer.parseInt(st.nextToken());
             int c = Integer.parseInt(st.nextToken());
 
+            // 양방향 그래프
             graph[s].add(new Node(n, c));
             graph[n].add(new Node(s, c));
         }
@@ -56,22 +58,23 @@ public class Main {
         // - 탐색
         dist = new int[N+1];
 
-        // 1 - v1 / v2 - N 최단경로
+        // 1 - v1 - v2 - N 최단경로
         v1First += dijkstra(1, v1);
         v1First += dijkstra(v1, v2);
         v1First += dijkstra(v2, N);
 
-
-        // 1 - v2 / v1 - N 최단경로
+        // 1 - v2 - v1 - N 최단경로
         v2First += dijkstra(1, v2);
         v2First += dijkstra(v2, v1);
         v2First += dijkstra(v1, N);
-
+        
+        
+        // - 정답 출력
         answer = (v1First >= INF && v2First >= INF) ? -1 : Math.min(v1First, v2First);
         System.out.println(answer);
     }
 
-    private static int dijkstra(int start, int end) {
+    public static int dijkstra(int start, int end) {
         Arrays.fill(dist, INF);
         dist[start] = 0;
 
@@ -80,11 +83,10 @@ public class Main {
 
         while(!pq.isEmpty()) {
             Node temp = pq.poll();
-            //if(temp.next < temp.cost) continue;
 
             for(Node node : graph[temp.next]) {
                 if(dist[node.next] > temp.cost + node.cost) {
-                    // 갱신
+                    // 최단 거리 갱신
                     dist[node.next] = temp.cost + node.cost;
                     pq.add(new Node(node.next, dist[node.next]));
                 }
