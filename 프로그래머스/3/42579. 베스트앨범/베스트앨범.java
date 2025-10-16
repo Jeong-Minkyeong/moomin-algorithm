@@ -59,21 +59,6 @@ class Solution {
             genreByAlbum.get(a.genre).add(a);
         }
         
-        // 예외상황 처리
-        // 장르가 하나라면
-//         if(mapByGenre.size() == 1){
-//             // 곡도 하나라면
-//             if(plays.length == 1) {
-//                 answer.add(0);
-//                 return answer;
-//             }
-            
-//             for(int i = 0; i<2; i++){
-//                 answer.add(genreByAlbum.get(genres[0]).get(i).num);
-//             }
-//             return answer;
-//         }
-        
         
         // 최대 스밍 장르 정렬
         ArrayList<Score> genreScore = new ArrayList<>();
@@ -88,6 +73,7 @@ class Solution {
         for(int i = 0; i<genreScore.size(); i++){
             for(int j = 0; j<2; j++){
                 answer.add(genreByAlbum.get(genreScore.get(i).genre).get(j).num);
+                // 곡이 하나라면
                 if(genreByAlbum.get(genreScore.get(i).genre).size() == 1) break;
             }
         }
