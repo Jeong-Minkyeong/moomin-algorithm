@@ -59,15 +59,13 @@ class Solution {
         if(leverCost == 0){
             return -1;
         }
-        // System.out.println(leverCost);
         
         // 출구 찾기
         int exitCost = bfs(lever[0], lever[1], arr, exit, N, M);
         if(exitCost == 0){
             return -1;
         }
-        // System.out.println(exitCost);
-            
+        
         // - 정답 출력
         answer = leverCost + exitCost;
         return answer;
