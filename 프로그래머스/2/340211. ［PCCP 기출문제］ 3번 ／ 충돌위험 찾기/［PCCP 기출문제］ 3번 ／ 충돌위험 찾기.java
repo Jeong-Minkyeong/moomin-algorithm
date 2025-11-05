@@ -5,9 +5,6 @@ class Solution {
     static List<int[]>[] arr;
     static int[][] visited;
     
-    static Set<Integer> time = new HashSet<>();
-    static HashMap<Integer, List<int[]>> moveMap = new HashMap<>();
-    
     public int solution(int[][] points, int[][] routes) {
         // - 준비
         arr = new ArrayList[routes.length];
@@ -22,14 +19,11 @@ class Solution {
             count = 0;
             for(int j = 0; j<routes[i].length-1; j++){
                 // 시작
+                // 한 구간만 움직일때만 시작점 넣어주기
                 if(j == 0){
                 arr[i].add(new int[]{points[routes[i][j]-1][0], points[routes[i][j]-1][1]});}
-                System.out.println(points[routes[i][j]-1][0] + " " + points[routes[i][j]-1][1]);
                 move(points[routes[i][j]-1], points[routes[i][j+1]-1], i);
             }
-            // 끝
-            //arr[i].add(new int[]{points[routes[i][routes[i].length-1]-1][0], points[routes[i][routes[i].length-1]-1][1]});
-            // System.out.println(points[routes[i][routes[i].length-1]-1][0] + " " + points[routes[i][routes[i].length-1]-1][1]);
         }
         
         // 가장 긴 초 찾기
@@ -38,7 +32,7 @@ class Solution {
             maxTime = Math.max(a.size(), maxTime);
         }
         
-        // 초별로 충돌 위치 찾기
+        // 초별로 발생하는 충돌 위치 찾기
         for(int i = 0; i<maxTime; i++){
             visited = new int[101][101];
             for(List<int[]> a : arr){
@@ -48,13 +42,10 @@ class Solution {
                 
                 if(visited[a.get(i)[0]][a.get(i)[1]] == 1) {
                     answer++;
-                    //System.out.println("충돌: " + a.get(i)[0] + " " + a.get(i)[1]);
                 }
                 visited[a.get(i)[0]][a.get(i)[1]] += 1;
             }
         }
-        
-        System.out.println(maxTime);
         
         // - 정답 출력
         return answer;
@@ -68,7 +59,6 @@ class Solution {
         if(startPoint[0] < endPoint[0]){
             for(int i = startPoint[0]+1; i<=endPoint[0]; i++){
                 arr[num].add(new int[]{i, startPoint[1]});
-                //System.out.println(i + " " + startPoint[1]);
             }
         }
         
@@ -76,7 +66,6 @@ class Solution {
         if(startPoint[0] > endPoint[0]){
             for(int i = startPoint[0]-1; i>=endPoint[0]; i--){
                 arr[num].add(new int[]{i, startPoint[1]});
-                //System.out.println(i + " " + startPoint[1]);
             }
         }
         
@@ -85,7 +74,6 @@ class Solution {
         if(startPoint[1] < endPoint[1]){
             for(int i = startPoint[1]+1; i<=endPoint[1]; i++){
                 arr[num].add(new int[]{endPoint[0], i});
-                //System.out.println(endPoint[0] + " " + i);
             }
         }
         
@@ -93,7 +81,6 @@ class Solution {
         if(startPoint[1] > endPoint[1]){
             for(int i = startPoint[1]-1; i>=endPoint[1]; i--){
                 arr[num].add(new int[]{endPoint[0], i});
-               // System.out.println(endPoint[0] + " " + i);
             }
         }
     }
