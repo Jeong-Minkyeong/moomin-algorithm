@@ -9,15 +9,14 @@ class Solution {
         int answer = 0;
         
         // 경계값 미리 제거
-        if(cacheSize == 0){
-            return cities.length * 5;
-        }
+        // if(cacheSize == 0){
+        //     return cities.length * 5;
+        // }
         
         // - 탐색
         for(String s : cities) {
             // 소문자 변환
             String city = s.toUpperCase();
-            //System.out.println(city);
             
             // Deque 사이즈가 cacheSize 보다 작을 경우
             if(deque.size() < cacheSize) {
