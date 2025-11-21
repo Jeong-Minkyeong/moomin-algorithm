@@ -26,10 +26,11 @@ class Solution {
         // - 탐색
         for(Integer i : numMap.keySet()){
             for(Integer num : numMap.get(i)) {
-                if(numSet.contains(num)) continue;
-                
-                ans.add(num);
-                numSet.add(num);
+                // set에 없다면
+                if(numSet.add(num)) {
+                    ans.add(num);
+                    numSet.add(num);        
+                }
             }
         }
         
