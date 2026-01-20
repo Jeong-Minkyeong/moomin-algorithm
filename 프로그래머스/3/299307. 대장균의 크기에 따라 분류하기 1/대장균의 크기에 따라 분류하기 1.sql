@@ -4,5 +4,5 @@ select e.id as "ID",
         when e.size_of_colony > 100 and e.size_of_colony <= 1000 then "MEDIUM"
         ELSE "HIGH"
     end) as "SIZE"
-from ECOLI_DATA e
+from ecoli_data e
 order by e.id
